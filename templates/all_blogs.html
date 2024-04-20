@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs Post</title>
+    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body  class="bg-black text-white font-mono antialiased">
+
+
+    <!-- Navbar -->
+
+    <nav class="bg-gray-400 p-4 text-black flex justify-between">
+        <div>
+            <h1 class="text-3xl font-bold">A.I. Blog Generator</h1>
+        </div>
+        <div>
+            <a href="#" class="text-black hover:underline mx-4">Welcome {{user.username}}</a>
+            <a href="/blog_list" class="text-black hover:underline mx-4">Saved Blogs</a>
+            <a href="logout" class="text-black hover:underline">Logout</a>
+        </div>
+
+    </nav>
+
+    <!-- main content  -->
+    <div class="container  mx-auto mt-10 px-4 sm:px-0">
+        <div class="max-w-3xl mx-auto bg-gray-900 p-6 rounded-lg shadow-md">
+            <!-- Blog Post section  -->
+            <section>
+                <h2 class="text-xl mb-4 text-pink-500 font-semibold">All Blog Post</h2>
+                <div class="space-y-4">
+                    {%for article in blog_articles reversed%}
+                   <a href="blog_details/{{article.id}}">
+                    <div class="border border-gray-300 p-4 rounded"> 
+                        <h3 class="text-lg text-yellow-500 font-semibold">{{article.youtube_title}}</h3>
+                        <p>{{article.generated_content|truncatechars:80}}</p>
+                    </div>
+                   </a>
+                    {%endfor%}
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer class="text-center p-4 text-white mt-6">Powered by Priyanshu</footer>
+</body>
+</html>
